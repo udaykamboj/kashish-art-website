@@ -22,6 +22,12 @@ export default function SignInPage() {
     e.preventDefault()
     // Handle sign in logic here
     console.log("Sign in:", formData)
+
+    // Simulate successful sign in
+    localStorage.setItem("hasSignedIn", "true")
+
+    // Redirect to home page or previous page
+    window.location.href = "/"
   }
 
   return (

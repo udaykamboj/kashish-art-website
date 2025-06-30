@@ -9,15 +9,6 @@ import { Checkbox } from "@/components/ui/checkbox"
 import { Slider } from "@/components/ui/slider"
 import { Search, Filter } from "lucide-react"
 
-const headerArtworks = [
-  { id: 1, image: "/placeholder.svg?height=120&width=180", title: "Featured 1" },
-  { id: 2, image: "/placeholder.svg?height=120&width=120", title: "Featured 2" },
-  { id: 3, image: "/placeholder.svg?height=120&width=160", title: "Featured 3" },
-  { id: 4, image: "/placeholder.svg?height=120&width=140", title: "Featured 4" },
-  { id: 5, image: "/placeholder.svg?height=120&width=200", title: "Featured 5" },
-  { id: 6, image: "/placeholder.svg?height=120&width=130", title: "Featured 6" },
-]
-
 const products = [
   {
     id: 1,
@@ -180,39 +171,27 @@ export default function ShopPage() {
     <div className="min-h-screen pt-20 pb-12">
       <div className="max-w-7xl mx-auto px-4">
         {/* Header Section with Featured Artworks */}
-        <div className="mb-8">
-          <div className="flex gap-2 mb-6 overflow-x-auto pb-2">
-            {headerArtworks.map((artwork) => (
-              <div key={artwork.id} className="flex-shrink-0">
-                <div className="relative h-24 w-32 rounded-lg overflow-hidden">
-                  <Image src={artwork.image || "/placeholder.svg"} alt={artwork.title} fill className="object-cover" />
-                </div>
-              </div>
-            ))}
-          </div>
+        <h1 className="text-4xl font-serif mb-2">Collect art and design online</h1>
+        <p className="text-gray-600 mb-6">
+          Discover and purchase original artworks, limited editions, and prints from contemporary artists.
+        </p>
 
-          <h1 className="text-4xl font-serif mb-2">Collect art and design online</h1>
-          <p className="text-gray-600 mb-6">
-            Discover and purchase original artworks, limited editions, and prints from contemporary artists.
-          </p>
-
-          {/* Search Bar */}
-          <div className="relative mb-6">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
-            <Input
-              placeholder="Search by artist, gallery, style, theme, tag, etc."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className="pl-10 h-12"
-            />
-          </div>
-
-          {/* Filter Toggle */}
-          <Button variant="outline" onClick={() => setShowFilters(!showFilters)} className="mb-6 lg:hidden">
-            <Filter className="mr-2 h-4 w-4" />
-            Filters
-          </Button>
+        {/* Search Bar */}
+        <div className="relative mb-6">
+          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
+          <Input
+            placeholder="Search by artist, gallery, style, theme, tag, etc."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="pl-10 h-12"
+          />
         </div>
+
+        {/* Filter Toggle */}
+        <Button variant="outline" onClick={() => setShowFilters(!showFilters)} className="mb-6 lg:hidden">
+          <Filter className="mr-2 h-4 w-4" />
+          Filters
+        </Button>
 
         <div className="flex gap-8">
           {/* Filters Sidebar */}
