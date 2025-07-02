@@ -126,7 +126,7 @@
       "type": "Passion Project",
       "year": "2024 - Present",
       "description": "Founded non-profit organization providing accessible art education to underserved communities.",
-      "image": "/placeholder.svg?height=300&width=400",
+      "image": "/art101.jpg",
       "link": "#",
       "status": "Active"
     },
@@ -135,7 +135,7 @@
       "type": "Community Service",
       "year": "2024",
       "description": "Designed coloring books donated to domestic violence shelters, providing therapeutic art activities.",
-      "image": "/placeholder.svg?height=300&width=400",
+      "image": "/unity.jpg",
       "link": "#",
       "status": "Completed"
     },
@@ -144,7 +144,7 @@
       "type": "Creative Work",
       "year": "2023 - Present",
       "description": "Professional modeling work with Rasanari, AmbizzFlair, Ensemble, Midas, and Blueprint Visions Agency.",
-      "image": "/placeholder.svg?height=300&width=400",
+      "image": "/fashioncommercialmodeling.jpg",
       "link": "#",
       "status": "Ongoing"
     }
