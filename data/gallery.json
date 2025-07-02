@@ -5,7 +5,7 @@
       "title": "Urban Reflections",
       "category": "Digital",
       "year": "2024",
-      "image": "/placeholder.svg?height=400&width=300",
+      "image": "/art/1.png",
       "description": "A digital exploration of city life through abstract forms and vibrant colors, capturing the energy and movement of urban environments."
     },
     {
@@ -13,7 +13,7 @@
       "title": "Nature's Symphony",
       "category": "Paintings",
       "year": "2024",
-      "image": "/placeholder.svg?height=500&width=400",
+      "image": "/art/2.png",
       "description": "An acrylic painting that celebrates the harmony found in natural landscapes, using organic shapes and earth tones to evoke tranquility."
     },
     {
@@ -21,7 +21,7 @@
       "title": "Portrait Study #3",
       "category": "Sketches",
       "year": "2023",
-      "image": "/placeholder.svg?height=600&width=400",
+      "image": "/art/3.png",
       "description": "A detailed charcoal study focusing on human expression and emotion, part of an ongoing series exploring portraiture."
     },
     {
@@ -29,7 +29,7 @@
       "title": "Abstract Emotions",
       "category": "Mixed Media",
       "year": "2024",
-      "image": "/placeholder.svg?height=400&width=400",
+      "image": "/art/4.png",
       "description": "A mixed media piece combining traditional painting with digital elements, representing the complexity of human emotions."
     },
     {
@@ -37,7 +37,7 @@
       "title": "Digital Dreams",
       "category": "Digital",
       "year": "2023",
-      "image": "/placeholder.svg?height=500&width=300",
+      "image": "/art/5.png",
       "description": "A surreal digital composition that blurs the line between reality and imagination, exploring themes of technology and consciousness."
     },
     {
@@ -45,7 +45,7 @@
       "title": "Landscape Memory",
       "category": "Paintings",
       "year": "2024",
-      "image": "/placeholder.svg?height=400&width=500",
+      "image": "/art/6.png",
       "description": "An oil painting inspired by childhood memories of countryside landscapes, rendered with impressionistic brushwork and warm colors."
     },
     {
@@ -53,7 +53,7 @@
       "title": "Quick Study",
       "category": "Sketches",
       "year": "2024",
-      "image": "/placeholder.svg?height=300&width=300",
+      "image": "/art/7.png",
       "description": "A spontaneous ink sketch capturing a moment in time, demonstrating the power of immediate artistic response."
     },
     {
@@ -61,7 +61,7 @@
       "title": "Textured Reality",
       "category": "Mixed Media",
       "year": "2023",
-      "image": "/placeholder.svg?height=600&width=400",
+      "image": "/art/8.png",
       "description": "An experimental piece combining various materials and techniques to create rich textures that invite tactile exploration."
     },
     {
@@ -69,7 +69,7 @@
       "title": "Cosmic Journey",
       "category": "Digital",
       "year": "2024",
-      "image": "/placeholder.svg?height=450&width=350",
+      "image": "/art/9.png",
       "description": "A digital artwork exploring the vastness of space and our place within the universe, using deep blues and cosmic imagery."
     },
     {
@@ -77,8 +77,24 @@
       "title": "Floral Abstraction",
       "category": "Paintings",
       "year": "2024",
-      "image": "/placeholder.svg?height=550&width=400",
+      "image": "/art/10.png",
       "description": "An abstract interpretation of botanical forms, celebrating the organic beauty of nature through bold colors and flowing lines."
+    },
+    {
+      "id": 11,
+      "title": "Silent Horizon",
+      "category": "Photography",
+      "year": "2024",
+      "image": "/art/11.png",
+      "description": "A serene photograph capturing the calm of a distant horizon at sunset, highlighting subtle gradients and peaceful composition."
+    },
+    {
+      "id": 12,
+      "title": "Electric Pulse",
+      "category": "Digital",
+      "year": "2024",
+      "image": "/art/12.png",
+      "description": "A vibrant digital piece representing the flow of energy and rhythm through dynamic lines and electric colors."
     }
   ]
 }
