@@ -11,7 +11,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Badge } from "@/components/ui/badge"
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible"
-import { Calendar, Clock, CheckCircle, ArrowRight, Mail, MapPin, Send, ChevronDown, ChevronUp } from "lucide-react"
+import { Calendar, Clock, CheckCircle, Mail, MapPin, Send, ChevronDown, ChevronUp, ArrowRight } from "lucide-react"
 
 const services = [
   {
@@ -156,6 +156,7 @@ export default function ConsultingPage() {
           </div>
 
           {/* Calendar Integration Placeholder */}
+          {/* Cal.com Integration */}
           <Card className="max-w-2xl mx-auto">
             <CardHeader>
               <CardTitle className="flex items-center justify-center">
@@ -166,15 +167,23 @@ export default function ConsultingPage() {
                 Book a free 30-minute consultation to discuss your project
               </CardDescription>
             </CardHeader>
-            <CardContent>
-              <div className="bg-gray-50 p-8 rounded-lg text-center">
-                <p className="text-gray-600 mb-4">Calendar integration would go here</p>
-                <Button>
-                  Open Calendar
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
-              </div>
-            </CardContent>
+<CardContent>
+  <div className="text-center">
+    <Button asChild size="lg">
+      <a 
+        href="https://cal.com/YOUR_USERNAME/consultation" 
+        target="_blank" 
+        rel="noopener noreferrer"
+        className="inline-flex items-center"
+      >
+        <Calendar className="mr-2 h-4 w-4" />
+        Schedule Consultation
+        <ArrowRight className="ml-2 h-4 w-4" />
+      </a>
+    </Button>
+  </div>
+</CardContent>
+
           </Card>
         </div>
 
