@@ -131,9 +131,13 @@ export default function AboutPage() {
         {/* Stats Section */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-20">
           {stats.map((stat, index) => (
-            <div key={index} className="text-center">
+            <div key={index} className="text-center relative">
               <div className="text-4xl font-bold font-serif mb-2">{stat.number}</div>
               <div className="text-gray-600">{stat.label}</div>
+              {/* Add vertical separator line except for the last item */}
+              {index < stats.length - 1 && (
+                <div className="hidden md:block absolute right-0 top-1/2 transform -translate-y-1/2 w-px h-16 bg-gray-300"></div>
+              )}
             </div>
           ))}
         </div>
@@ -221,10 +225,6 @@ export default function AboutPage() {
                 <div>
                   <p className="font-medium">Email</p>
                   <p className="text-gray-600">kashish5278@gmail.com</p>
-                </div>
-                <div>
-                  <p className="font-medium">Phone</p>
-                  <p className="text-gray-600">(425) 236-2930</p>
                 </div>
                 <div>
                   <p className="font-medium">Location</p>

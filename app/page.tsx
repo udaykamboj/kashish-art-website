@@ -46,7 +46,7 @@ export default function HomePage() {
                 COMMUNITY SERVICE
               </p>
               <div className="mt-6 inline-block border border-black rounded-full px-4 py-2">
-                <span className="text-sm font-medium">AND</span>
+                <span className="text-sm font-medium">UNIQUE</span>
               </div>
             </div>
 

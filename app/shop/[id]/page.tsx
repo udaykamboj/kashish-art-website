@@ -4,52 +4,29 @@ import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Share2, ArrowLeft, Eye, Bookmark, ChevronDown, ShoppingCart, Check } from "lucide-react"
+import { Share2, ArrowLeft, ChevronDown, ShoppingCart, Check, Bookmark, BookmarkCheck } from "lucide-react"
 import Link from "next/link"
 import { useCart } from "@/lib/cart"
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import { saveItem, removeSavedItem, isItemSaved } from "@/lib/saved-items"
+import productsData from "@/data/products.json"
 
-// This would typically come from a database or API
 const getProduct = (id: string) => {
-  const products = [
-    {
-      id: "1",
-      title: "Abstract Harmony",
-      artist: "Kashish",
-      category: "Original Paintings",
-      price: 1200,
-      priceRange: "$1,200",
-      images: [
-        "/placeholder.svg?height=600&width=500",
-        "/placeholder.svg?height=600&width=500",
-        "/placeholder.svg?height=600&width=500",
-      ],
-      status: "available",
-      description:
-        "A captivating exploration of color and form, 'Abstract Harmony' represents the delicate balance between chaos and order. This piece was created during a period of personal transformation, using bold brushstrokes and layered textures to convey emotion and movement.",
-      detailedDescription:
-        "This work explores the intersection of traditional painting techniques with contemporary abstract expression. The layered composition invites viewers to discover new details with each viewing, while the harmonious color palette creates a sense of tranquility and balance. Created using high-quality acrylic paints on professional-grade canvas, this piece demonstrates the artist's mastery of both technique and conceptual depth.",
-      medium: "Acrylic on canvas",
-      dimensions: "24 x 36 inches (61 x 91.4 cm)",
-      year: "2024",
-      signature: "Hand signed by artist",
-      frame: "Frame included",
-      certificate: "Includes a Certificate of Authenticity",
-      uniqueWork: true,
-      edition: null,
-      provenance: "Direct from the artist's studio",
-      exhibitions: ["Contemporary Visions, Gallery Modern, 2024"],
-      literature: null,
-    },
-  ]
-
-  return products.find((p) => p.id === id)
+  return productsData.products.find((p) => p.id === id)
 }
 
 export default function ProductDetailPage({ params }: { params: { id: string } }) {
   const product = getProduct(params.id)
   const { addItem, items } = useCart()
   const [isAdded, setIsAdded] = useState(false)
+  const [isSaved, setIsSaved] = useState(false)
+  const [shareMessage, setShareMessage] = useState("")
+
+  useEffect(() => {
+    if (product) {
+      setIsSaved(isItemSaved(product.id))
+    }
+  }, [product])
 
   if (!product) {
     return (
@@ -80,6 +57,52 @@ export default function ProductDetailPage({ params }: { params: { id: string } }
     setTimeout(() => setIsAdded(false), 2000)
   }
 
+  const handleSave = () => {
+    if (isSaved) {
+      removeSavedItem(product.id)
+      setIsSaved(false)
+    } else {
+      saveItem({
+        id: product.id,
+        title: product.title,
+        artist: product.artist,
+        image: product.images[0],
+        price: product.price,
+        category: product.category,
+      })
+      setIsSaved(true)
+    }
+  }
+
+  const handleShare = async () => {
+    const shareData = {
+      title: `${product.title} by ${product.artist}`,
+      text: `Check out this amazing artwork: ${product.title} by ${product.artist}`,
+      url: window.location.href,
+    }
+
+    try {
+      if (navigator.share && navigator.canShare(shareData)) {
+        await navigator.share(shareData)
+      } else {
+        // Fallback: copy to clipboard
+        await navigator.clipboard.writeText(window.location.href)
+        setShareMessage("Link copied to clipboard!")
+        setTimeout(() => setShareMessage(""), 3000)
+      }
+    } catch (error) {
+      // Fallback: copy to clipboard
+      try {
+        await navigator.clipboard.writeText(window.location.href)
+        setShareMessage("Link copied to clipboard!")
+        setTimeout(() => setShareMessage(""), 3000)
+      } catch {
+        setShareMessage("Unable to share")
+        setTimeout(() => setShareMessage(""), 3000)
+      }
+    }
+  }
+
   return (
     <div className="min-h-screen pt-20 pb-12">
       <div className="max-w-7xl mx-auto px-4">
@@ -108,19 +131,19 @@ export default function ProductDetailPage({ params }: { params: { id: string } }
 
             {/* Action Buttons Below Image */}
             <div className="flex items-center justify-center gap-6 py-4 border-t border-gray-200">
-              <Button variant="ghost" size="sm" className="flex items-center gap-2">
-                <Bookmark className="h-4 w-4" />
-                Save
+              <Button variant="ghost" size="sm" className="flex items-center gap-2" onClick={handleSave}>
+                {isSaved ? <BookmarkCheck className="h-4 w-4 text-blue-600" /> : <Bookmark className="h-4 w-4" />}
+                {isSaved ? "Saved" : "Save"}
               </Button>
-              <Button variant="ghost" size="sm" className="flex items-center gap-2">
-                <Eye className="h-4 w-4" />
-                View in room
-              </Button>
-              <Button variant="ghost" size="sm" className="flex items-center gap-2">
+              <Button variant="ghost" size="sm" className="flex items-center gap-2" onClick={handleShare}>
                 <Share2 className="h-4 w-4" />
                 Share
               </Button>
             </div>
+
+            {shareMessage && (
+              <div className="text-center text-sm text-green-600 bg-green-50 py-2 px-4 rounded-md">{shareMessage}</div>
+            )}
           </div>
 
           {/* Product Details */}
@@ -140,9 +163,9 @@ export default function ProductDetailPage({ params }: { params: { id: string } }
               <div className="flex items-center gap-4 mb-6">
                 <Badge variant="outline" className="flex items-center gap-1">
                   <div className="w-2 h-2 bg-green-500 rounded-full" />
-                  Unique work
+                  {product.uniqueWork ? "Unique work" : product.edition}
                 </Badge>
-                <Badge variant="outline">Includes a Certificate of Authenticity</Badge>
+                <Badge variant="outline">{product.certificate}</Badge>
               </div>
 
               <div className="text-3xl font-bold mb-8">${product.price.toLocaleString()}</div>
@@ -154,9 +177,11 @@ export default function ProductDetailPage({ params }: { params: { id: string } }
                 size="lg"
                 className="w-full bg-black text-white hover:bg-gray-800"
                 onClick={handleAddToCart}
-                disabled={isInCart}
+                disabled={isInCart || product.status === "sold"}
               >
-                {isAdded ? (
+                {product.status === "sold" ? (
+                  "Sold Out"
+                ) : isAdded ? (
                   <>
                     <Check className="mr-2 h-5 w-5" />
                     Added to Cart!
@@ -208,10 +233,10 @@ export default function ProductDetailPage({ params }: { params: { id: string } }
                 <div className="flex items-center justify-between">
                   <div>
                     <h3 className="font-medium">{product.artist}</h3>
-                    <p className="text-sm text-gray-600">Kashish's Studio</p>
+                    <p className="text-sm text-gray-600">{product.gallery}</p>
                   </div>
-                  <Button variant="outline" size="sm">
-                    Contact Gallery
+                  <Button variant="outline" size="sm" asChild>
+                    <Link href="/contact">Contact Gallery</Link>
                   </Button>
                 </div>
               </CardContent>
@@ -236,11 +261,11 @@ export default function ProductDetailPage({ params }: { params: { id: string } }
                 </div>
                 <div>
                   <span className="font-medium text-gray-500">Rarity</span>
-                  <p>Unique</p>
+                  <p>{product.uniqueWork ? "Unique" : product.edition}</p>
                 </div>
                 <div>
-                  <span className="font-medium text-gray-500">Medium</span>
-                  <p>Mixed Media</p>
+                  <span className="font-medium text-gray-500">Category</span>
+                  <p>{product.category}</p>
                 </div>
                 <div>
                   <span className="font-medium text-gray-500">Signature</span>
@@ -252,7 +277,7 @@ export default function ProductDetailPage({ params }: { params: { id: string } }
                 </div>
                 <div>
                   <span className="font-medium text-gray-500">Frame</span>
-                  <p>Included</p>
+                  <p>{product.frame}</p>
                 </div>
               </div>
             </div>
@@ -266,23 +291,24 @@ export default function ProductDetailPage({ params }: { params: { id: string } }
                 <div className="flex items-center justify-between mb-4">
                   <div>
                     <h3 className="font-medium text-lg">{product.artist}</h3>
-                    <p className="text-sm text-gray-600">Born in 1985</p>
+                    <p className="text-sm text-gray-600">Contemporary Artist</p>
                   </div>
-                  <Button variant="outline" size="sm">
-                    Follow
-                  </Button>
                 </div>
                 <p className="text-gray-700 leading-relaxed mb-4">{product.detailedDescription}</p>
 
                 {/* Exhibition History */}
                 <div className="space-y-4">
                   <div>
-                    <h4 className="font-medium text-gray-500 mb-2">Established</h4>
-                    <p className="text-sm">Represented by leading galleries</p>
+                    <h4 className="font-medium text-gray-500 mb-2">Recent Exhibitions</h4>
+                    <div className="text-sm space-y-1">
+                      {product.exhibitions.map((exhibition, index) => (
+                        <p key={index}>{exhibition}</p>
+                      ))}
+                    </div>
                   </div>
                   <div>
-                    <h4 className="font-medium text-gray-500 mb-2">Collected by a major museum</h4>
-                    <p className="text-sm">Museum of Modern Art (MoMA)/Centre Pompidou/Guggenheim Museum of Art</p>
+                    <h4 className="font-medium text-gray-500 mb-2">Provenance</h4>
+                    <p className="text-sm">{product.provenance}</p>
                   </div>
                 </div>
               </div>

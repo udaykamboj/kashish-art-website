@@ -1,0 +1,209 @@
+{
+  "education": {
+    "school": "North Creek High School, Bothell WA",
+    "class": "Class of 2026",
+    "gpa": "3.8 Unweighted GPA"
+  },
+  "experiences": [
+    {
+      "title": "Assistant Teacher",
+      "company": "BestIn Classes Education Center",
+      "period": "06/2025 – Present",
+      "description": "Math and English Teacher providing personalized instruction and support to students.",
+      "skills": ["Teaching", "Mathematics", "English", "Student Mentoring"],
+      "type": "work"
+    },
+    {
+      "title": "Assistant Teacher",
+      "company": "Wisdom Seedlings",
+      "period": "06/2021 – 06/2023",
+      "location": "Bothell, WA",
+      "description": "Taught Art and Math basic skills to children ages 1-5 years, developing age-appropriate curriculum and engaging learning activities.",
+      "skills": ["Early Childhood Education", "Art Instruction", "Mathematics", "Curriculum Development"],
+      "type": "work"
+    },
+    {
+      "title": "Design Lyric Architecture Internship",
+      "company": "with Sanjeev Sharma",
+      "period": "2024",
+      "description": "Gained hands-on experience in architectural design and drafting, working on real projects and learning industry-standard practices.",
+      "skills": ["Architectural Design", "Drafting", "Project Management", "Client Relations"],
+      "type": "internship"
+    },
+    {
+      "title": "UCLA AUD Summer Program",
+      "company": "UCLA Architecture and Urban Design",
+      "period": "06/2024 – 07/2024",
+      "description": "Intensive summer program focusing on architectural design principles, urban planning, and sustainable design practices.",
+      "skills": ["Architectural Design", "Urban Planning", "Sustainable Design", "3D Modeling"],
+      "type": "education"
+    },
+    {
+      "title": "NOP AII Art Internship",
+      "company": "Collaboration with Expressions Arts",
+      "period": "2024",
+      "description": "Collaborative art internship focusing on contemporary art practices and community engagement through artistic expression.",
+      "skills": ["Contemporary Art", "Community Engagement", "Art Direction", "Collaboration"],
+      "type": "internship"
+    }
+  ],
+  "leadership": [
+    {
+      "title": "Co-Captain",
+      "organization": "Varsity High School Badminton Team",
+      "description": "Led team strategy, coordinated practice sessions, and mentored junior players."
+    },
+    {
+      "title": "Communications Director",
+      "organization": "NeuroPath Board",
+      "description": "Managed all communications and outreach for neuroscience education initiatives."
+    },
+    {
+      "title": "Director/Producer",
+      "organization": "NOP AII CORE Sets Team",
+      "description": "Oversaw production and creative direction for art installation projects."
+    },
+    {
+      "title": "ASB Grade Representative",
+      "organization": "North Creek High School",
+      "description": "Represented student body interests and coordinated class activities and events."
+    },
+    {
+      "title": "Teen Arts Council Member",
+      "organization": "Graphic Designer",
+      "description": "Created visual designs and promotional materials for community arts programs."
+    }
+  ],
+  "achievements": [
+    {
+      "title": "1st Place - National Federal Duck Stamp Art Contest",
+      "year": "2024",
+      "type": "National Competition"
+    },
+    {
+      "title": "2nd Place - National 'Anything India' Art Contest",
+      "year": "2024",
+      "type": "National Competition"
+    },
+    {
+      "title": "2nd Place - International 'Still Life' Art Contest",
+      "year": "2024",
+      "type": "International Competition"
+    },
+    {
+      "title": "Sheroes National Art Contest - Honorable Mention",
+      "year": "2024",
+      "type": "National Recognition"
+    },
+    {
+      "title": "GEMS Diamond Medalist",
+      "year": "2024",
+      "type": "STEM Achievement"
+    },
+    {
+      "title": "Gold PVSA Recipient",
+      "year": "2023",
+      "type": "Community Service"
+    },
+    {
+      "title": "Silver PVSA Recipient",
+      "year": "2024",
+      "type": "Community Service"
+    }
+  ],
+  "projects": [
+    {
+      "title": "KashishSethArts - Online Art Store",
+      "type": "Entrepreneurship",
+      "year": "2024 - Present",
+      "description": "Founded and developed comprehensive online art platform featuring original artworks, prints, and creative services.",
+      "image": "/placeholder.svg?height=300&width=400",
+      "link": "https://kashishseth.art",
+      "status": "In Progress"
+    },
+    {
+      "title": "Art 101 - Non-Profit Art Academy",
+      "type": "Passion Project",
+      "year": "2024 - Present",
+      "description": "Founded non-profit organization providing accessible art education to underserved communities.",
+      "image": "/placeholder.svg?height=300&width=400",
+      "link": "#",
+      "status": "Active"
+    },
+    {
+      "title": "Art Connection Unity Project",
+      "type": "Community Service",
+      "year": "2024",
+      "description": "Designed coloring books donated to domestic violence shelters, providing therapeutic art activities.",
+      "image": "/placeholder.svg?height=300&width=400",
+      "link": "#",
+      "status": "Completed"
+    },
+    {
+      "title": "Fashion Commercial Modeling",
+      "type": "Creative Work",
+      "year": "2023 - Present",
+      "description": "Professional modeling work with Rasanari, AmbizzFlair, Ensemble, Midas, and Blueprint Visions Agency.",
+      "image": "/placeholder.svg?height=300&width=400",
+      "link": "#",
+      "status": "Ongoing"
+    }
+  ],
+  "skills": [
+    "Architectural Design & Drafting",
+    "Rhinoceros/SketchUp/FloorPlanner",
+    "ProCreate/Canva/Adobe Suite",
+    "Advanced Art & Graphic Design",
+    "Leadership & Organization",
+    "Team Collaboration",
+    "Teaching & Mentoring",
+    "English, Hindi, Advanced Spanish"
+  ],
+  "timeline": [
+    {
+      "year": "2025",
+      "title": "ACE Mentor Program - Seattle",
+      "description": "Currently participating in architecture, construction, and engineering mentorship program"
+    },
+    {
+      "year": "2024",
+      "title": "Founded KashishSethArts",
+      "description": "Launched online art store and creative platform at kashishseth.art"
+    },
+    {
+      "year": "2024",
+      "title": "UCLA AUD Summer Program",
+      "description": "Completed intensive Architecture and Urban Design program"
+    },
+    {
+      "year": "2024",
+      "title": "National Art Contest Winner",
+      "description": "1st Place in National Federal Duck Stamp Art Contest"
+    },
+    {
+      "year": "2023",
+      "title": "Gold PVSA Recipient",
+      "description": "Recognized for outstanding community service contributions"
+    },
+    {
+      "year": "2021",
+      "title": "Teaching Journey Begins",
+      "description": "Started as Assistant Teacher at Wisdom Seedlings, working with young children"
+    }
+  ],
+  "activities": [
+    "Varsity High School Gymnastics",
+    "Varsity High School Badminton - Co-Captain",
+    "National Honor Society Member (2023 - Present)",
+    "NeuroPath Board Member (Communication Director)",
+    "FBLA, HOSA, TSA State Qualifier (2024-2025)",
+    "Teen Arts Council Member - Graphic Designer",
+    "Fashion Commercial Modeling"
+  ],
+  "stats": [
+    { "number": "100+", "label": "Artworks Created" },
+    { "number": "7+", "label": "National Awards" },
+    { "number": "500+", "label": "Community Service Hours" },
+    { "number": "3.8", "label": "GPA" }
+  ]
+}

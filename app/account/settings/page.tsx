@@ -8,7 +8,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Switch } from "@/components/ui/switch"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { ArrowLeft, Save, Shield, Bell, Eye } from "lucide-react"
+import { ArrowLeft, Save, Shield, Bell } from "lucide-react"
 
 export default function AccountSettingsPage() {
   const [settings, setSettings] = useState({
@@ -103,35 +103,6 @@ export default function AccountSettingsPage() {
                   checked={settings.newArtworkAlerts}
                   onCheckedChange={(checked) => setSettings({ ...settings, newArtworkAlerts: checked })}
                 />
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* Privacy Settings */}
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Eye className="h-5 w-5" />
-                Privacy Settings
-              </CardTitle>
-              <CardDescription>Control your privacy and profile visibility</CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-6">
-              <div>
-                <Label htmlFor="profileVisibility">Profile Visibility</Label>
-                <Select
-                  value={settings.profileVisibility}
-                  onValueChange={(value) => setSettings({ ...settings, profileVisibility: value })}
-                >
-                  <SelectTrigger className="mt-2">
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="public">Public</SelectItem>
-                    <SelectItem value="private">Private</SelectItem>
-                    <SelectItem value="friends">Friends Only</SelectItem>
-                  </SelectContent>
-                </Select>
               </div>
             </CardContent>
           </Card>

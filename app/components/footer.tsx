@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { Instagram, Twitter, Facebook, Mail, Phone, MapPin } from "lucide-react"
+import { Instagram, Twitter, Facebook, Mail, MapPin } from "lucide-react"
 
 const socialLinks = [
   { name: "Instagram", href: "#", icon: Instagram },
@@ -63,10 +63,6 @@ export default function Footer() {
               <div className="flex items-center">
                 <Mail className="h-4 w-4 mr-2" />
                 <span>kashish5278@gmail.com</span>
-              </div>
-              <div className="flex items-center">
-                <Phone className="h-4 w-4 mr-2" />
-                <span>(425) 236-2930</span>
               </div>
               <div className="flex items-center">
                 <MapPin className="h-4 w-4 mr-2" />
