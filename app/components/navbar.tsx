@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
+import Image from "next/image"
 import { usePathname } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
@@ -55,8 +56,9 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <Link href="/" className="font-serif text-2xl font-bold">
-            Kashish
+          <Link href="/" className="flex items-center space-x-2">
+            <Image src="/ks-art-logo.svg" alt="KS Art Logo" width={40} height={40} className="w-10 h-10" />
+            <span className="text-2xl">Kashish <span className="font-bold">Seth</span></span>
           </Link>
 
           {/* Desktop Navigation */}

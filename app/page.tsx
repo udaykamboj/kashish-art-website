@@ -16,11 +16,12 @@ export default function HomePage() {
                 <h1 className="text-6xl md:text-8xl lg:text-9xl font-serif font-bold tracking-tight">CREATIVE</h1>
                 <div className="relative w-32 h-20 md:w-48 md:h-32 lg:w-64 lg:h-40 rounded-lg overflow-hidden">
                   <Image
-                    src="/placeholder.svg?height=160&width=256"
+                    src="/banner1.jpg"
                     alt="Creative artwork"
                     fill
                     className="object-cover"
                   />
+
                 </div>
               </div>
 
@@ -29,7 +30,7 @@ export default function HomePage() {
               <div className="flex items-center gap-8">
                 <div className="relative w-32 h-20 md:w-48 md:h-32 lg:w-64 lg:h-40 rounded-lg overflow-hidden">
                   <Image
-                    src="/placeholder.svg?height=160&width=256"
+                    src="/banner2.jpg"
                     alt="Design artwork"
                     fill
                     className="object-cover"
