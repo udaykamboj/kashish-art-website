@@ -2,7 +2,8 @@ import Link from "next/link"
 import { Instagram, Twitter, Facebook, Mail, MapPin } from "lucide-react"
 
 const socialLinks = [
-  { name: "Instagram", href: "https://www.instagram.com/kashishseth.art/", icon: Instagram },
+  { name: "Instagram", href: "#", icon: Instagram },
+  { name: "Twitter", href: "#", icon: Twitter },
   { name: "Facebook", href: "#", icon: Facebook },
 ]
 

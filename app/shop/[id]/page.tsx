@@ -228,21 +228,19 @@ export default function ProductDetailPage({ params }: { params: { id: string } }
             </div>
 
             {/* Gallery Info */}
-            {product.gallery && (
-              <Card className="bg-gray-50">
-                <CardContent className="p-4">
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <h3 className="font-medium">{product.artist}</h3>
-                      <p className="text-sm text-gray-600">{product.gallery}</p>
-                    </div>
-                    <Button variant="outline" size="sm" asChild>
-                      <Link href="/contact">Contact Gallery</Link>
-                    </Button>
+            <Card className="bg-gray-50">
+              <CardContent className="p-4">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <h3 className="font-medium">{product.artist}</h3>
+                    <p className="text-sm text-gray-600">{product.gallery}</p>
                   </div>
-                </CardContent>
-              </Card>
-            )}
+                  <Button variant="outline" size="sm" asChild>
+                    <Link href="/contact">Contact Gallery</Link>
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
           </div>
         </div>
 
@@ -300,23 +298,18 @@ export default function ProductDetailPage({ params }: { params: { id: string } }
 
                 {/* Exhibition History */}
                 <div className="space-y-4">
-                  {Array.isArray(product.exhibitions) && product.exhibitions.length > 0 && (
-                    <div>
-                      <h4 className="font-medium text-gray-500 mb-2">Recent Exhibitions</h4>
-                      <div className="text-sm space-y-1">
-                        {product.exhibitions.map((exhibition, index) => (
-                          <p key={index}>{exhibition}</p>
-                        ))}
-                      </div>
+                  <div>
+                    <h4 className="font-medium text-gray-500 mb-2">Recent Exhibitions</h4>
+                    <div className="text-sm space-y-1">
+                      {product.exhibitions.map((exhibition, index) => (
+                        <p key={index}>{exhibition}</p>
+                      ))}
                     </div>
-                  )}
-
-                  {product.provenance && (
-                    <div>
-                      <h4 className="font-medium text-gray-500 mb-2">Provenance</h4>
-                      <p className="text-sm">{product.provenance}</p>
-                    </div>
-                  )}
+                  </div>
+                  <div>
+                    <h4 className="font-medium text-gray-500 mb-2">Provenance</h4>
+                    <p className="text-sm">{product.provenance}</p>
+                  </div>
                 </div>
               </div>
             </div>

@@ -113,7 +113,7 @@ export default function AboutPage() {
           </div>
           <div className="relative">
             <Image
-              src="/about.png"
+              src="/placeholder.svg?height=600&width=500"
               alt="Kashish Seth portrait"
               width={500}
               height={600}
