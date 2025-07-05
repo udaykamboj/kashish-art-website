@@ -19,32 +19,22 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
         
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v4
-        with:
-          version: 8
-          
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: "18"
-          cache: "pnpm"
-          
+          cache: "npm"
+
       - name: Install dependencies
-        run: |
-          if [ -f pnpm-lock.yaml ]; then
-            pnpm install --frozen-lockfile
-          else
-            pnpm install --no-frozen-lockfile
-          fi
-        
+        run: npm ci
+
       - name: Build Next.js project
-        run: pnpm run build
+        run: npm run build
         env:
           NODE_ENV: production
-          
+
       - name: Export static files (if using static export)
-        run: pnpm run export
+        run: npm run export
         continue-on-error: true
         
       - name: Upload build artifacts
@@ -121,6 +111,16 @@ jobs:
           echo "- **Commit**: ${{ github.sha }}" >> $GITHUB_STEP_SUMMARY
           echo "- **Status**: ✅ Successful" >> $GITHUB_STEP_SUMMARY
           echo "- **Deployed at**: $(date)" >> $GITHUB_STEP_SUMMARY
+          echo "- **Site URL**: https://kashishseth.art" >> $GITHUB_STEP_SUMMARY
+      - name: Create deployment summary
+        run: |
+          echo "## 🚀 Next.js Deployment Summary" >> $GITHUB_STEP_SUMMARY
+          echo "- **Environment**: ${{ github.event.inputs.environment || 'production' }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Release**: ${{ github.ref_name }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Commit**: ${{ github.sha }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Status**: ✅ Successful" >> $GITHUB_STEP_SUMMARY
+          echo "- **Deployed at**: $(date)" >> $GITHUB_STEP_SUMMARY
+          echo "- **Site URL**: https://kashishseth.art" >> $GITHUB_STEP_SUMMARY
           echo "- **Site URL**: https://kashishseth.art" >> $GITHUB_STEP_SUMMARY
       - name: Create deployment summary
         run: |
