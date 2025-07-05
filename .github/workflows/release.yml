@@ -33,17 +33,20 @@ jobs:
         env:
           NODE_ENV: production
 
-      - name: Check if .next folder exists
+      - name: Export static site
+        run: npx next export
+
+      - name: Check if out folder exists
         run: |
-          if [ -d ".next" ]; then
-            echo ".next folder exists."
+          if [ -d "out" ]; then
+            echo "out folder exists."
           else
-            echo "❌ .next folder does not exist! Build failed."
+            echo "❌ out folder does not exist! Export failed."
             exit 1
           fi
 
       - name: Archive build output
-        run: tar -czf nextjs-build.tar.gz .next public package.json next.config.ts
+        run: tar -czf nextjs-build.tar.gz out package.json next.config.ts
 
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
@@ -68,14 +71,11 @@ jobs:
       - name: Prepare deployment files
         run: |
           mkdir -p deploy
-          if [ -d ".next" ]; then
-            cp -r .next deploy/
+          if [ -d "out" ]; then
+            cp -r out/* deploy/
           else
-            echo ".next directory not found! Build may have failed."
+            echo "out directory not found! Export may have failed."
             exit 1
-          fi
-          if [ -d "public" ]; then
-            cp -r public deploy/
           fi
           if [ -f "package.json" ]; then
             cp package.json deploy/
@@ -84,7 +84,7 @@ jobs:
             cp next.config.ts deploy/
           fi
 
-      - name: Deploy to SFTP
+      - name: Deploy to FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
           server: pdx1-shared-a1-33.dreamhost.com
