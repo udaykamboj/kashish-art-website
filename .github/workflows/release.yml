@@ -33,18 +33,6 @@ jobs:
         env:
           NODE_ENV: production
 
-      - name: Export static site
-        run: npx next export
-
-      - name: Check if out folder exists
-        run: |
-          if [ -d "out" ]; then
-            echo "out folder exists."
-          else
-            echo "❌ out folder does not exist! Export failed."
-            exit 1
-          fi
-
       - name: Archive build output
         run: tar -czf nextjs-build.tar.gz out package.json next.config.ts
 
@@ -152,6 +140,18 @@ jobs:
           echo "- **Site URL**: https://kashishseth.art" >> $GITHUB_STEP_SUMMARY
           echo "- **Release**: ${{ github.ref_name }}" >> $GITHUB_STEP_SUMMARY
           echo "- **Commit**: ${{ github.sha }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Status**: ✅ Successful" >> $GITHUB_STEP_SUMMARY
+          echo "- **Deployed at**: $(date)" >> $GITHUB_STEP_SUMMARY
+          echo "- **Site URL**: https://kashishseth.art" >> $GITHUB_STEP_SUMMARY
+          echo "- **Release**: ${{ github.ref_name }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Commit**: ${{ github.sha }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Status**: ✅ Successful" >> $GITHUB_STEP_SUMMARY
+          echo "- **Deployed at**: $(date)" >> $GITHUB_STEP_SUMMARY
+          echo "- **Site URL**: https://kashishseth.art" >> $GITHUB_STEP_SUMMARY
+          echo "- **Commit**: ${{ github.sha }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Status**: ✅ Successful" >> $GITHUB_STEP_SUMMARY
+          echo "- **Deployed at**: $(date)" >> $GITHUB_STEP_SUMMARY
+          echo "- **Site URL**: https://kashishseth.art" >> $GITHUB_STEP_SUMMARY
           echo "- **Status**: ✅ Successful" >> $GITHUB_STEP_SUMMARY
           echo "- **Deployed at**: $(date)" >> $GITHUB_STEP_SUMMARY
           echo "- **Site URL**: https://kashishseth.art" >> $GITHUB_STEP_SUMMARY
