@@ -42,15 +42,14 @@ jobs:
             exit 1
           fi
 
+      - name: Archive build output
+        run: tar -czf nextjs-build.tar.gz .next public package.json next.config.ts
+
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
         with:
           name: nextjs-build
-          path: |
-            .next/
-            public/
-            package.json
-            next.config.ts
+          path: nextjs-build.tar.gz
           retention-days: 30
   deploy:
     needs: build
@@ -62,6 +61,9 @@ jobs:
         with:
           name: nextjs-build
           path: .
+
+      - name: Extract build output
+        run: tar -xzf nextjs-build.tar.gz
 
       - name: Prepare deployment files
         run: |
