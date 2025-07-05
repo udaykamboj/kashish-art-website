@@ -47,11 +47,10 @@ jobs:
         with:
           name: nextjs-build
           path: |
-            out/
             .next/
             public/
             package.json
-            next.config.js
+            next.config.mjs
           retention-days: 30
   deploy:
     needs: build
@@ -62,28 +61,20 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: nextjs-build
-          
+
       - name: Prepare deployment files
         run: |
-          # If using static export, use 'out' directory
-          if [ -d "out" ]; then
-            echo "Using static export from 'out' directory"
-            mkdir -p deploy
-            cp -r out/* deploy/
-          else
-            echo "Using standard Next.js build"
-            mkdir -p deploy
-            cp -r .next/ deploy/
-            cp -r public/* deploy/ 2>/dev/null || true
-            cp package.json deploy/ 2>/dev/null || true
-            cp next.config.js deploy/ 2>/dev/null || true
-          fi
-          
+          mkdir -p deploy
+          cp -r .next deploy/
+          cp -r public deploy/
+          cp package.json deploy/
+          cp next.config.mjs deploy/
+
       - name: Deploy to SFTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
           server: ftp.kashishseth.art
-          username: kashsishseth
+          username: kashishseth
           password: ${{ secrets.FTP_PASSWORD }}
           port: 22
           protocol: sftp
@@ -117,6 +108,15 @@ jobs:
     runs-on: ubuntu-latest
     if: success()
     steps:
+      - name: Create deployment summary
+        run: |
+          echo "## 🚀 Next.js Deployment Summary" >> $GITHUB_STEP_SUMMARY
+          echo "- **Environment**: ${{ github.event.inputs.environment || 'production' }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Release**: ${{ github.ref_name }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Commit**: ${{ github.sha }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Status**: ✅ Successful" >> $GITHUB_STEP_SUMMARY
+          echo "- **Deployed at**: $(date)" >> $GITHUB_STEP_SUMMARY
+          echo "- **Site URL**: https://kashishseth.art" >> $GITHUB_STEP_SUMMARY
       - name: Create deployment summary
         run: |
           echo "## 🚀 Next.js Deployment Summary" >> $GITHUB_STEP_SUMMARY
