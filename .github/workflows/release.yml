@@ -1,5 +1,4 @@
-name: Release and Deploy
-
+name: Release and Deploy Next.js
 on:
   release:
     types: [published]
@@ -17,46 +16,67 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-
+        
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: "18"
           cache: "npm"
-
+          
       - name: Install dependencies
         run: npm ci
-
-      - name: Build project
+        
+      - name: Build Next.js project
         run: npm run build
         env:
           NODE_ENV: production
-          BASE_URL: /
-
+          
+      - name: Export static files (if using static export)
+        run: npm run export
+        continue-on-error: true
+        
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: production-build
-          path: build/
+          name: nextjs-build
+          path: |
+            out/
+            .next/
+            public/
+            package.json
+            next.config.js
           retention-days: 30
 
   deploy:
     needs: build
     runs-on: ubuntu-latest
     environment: ${{ github.event.inputs.environment || 'production' }}
-
     steps:
       - name: Download build artifacts
         uses: actions/download-artifact@v4
         with:
-          name: production-build
-          path: build/
-
-      - name: Deploy to FTP
+          name: nextjs-build
+          
+      - name: Prepare deployment files
+        run: |
+          # If using static export, use 'out' directory
+          if [ -d "out" ]; then
+            echo "Using static export from 'out' directory"
+            mkdir -p deploy
+            cp -r out/* deploy/
+          else
+            echo "Using standard Next.js build"
+            mkdir -p deploy
+            cp -r .next/ deploy/
+            cp -r public/* deploy/ 2>/dev/null || true
+            cp package.json deploy/ 2>/dev/null || true
+            cp next.config.js deploy/ 2>/dev/null || true
+          fi
+          
+      - name: Deploy to SFTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
           server: ftp.kashishseth.art
@@ -64,41 +84,43 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           port: 22
           protocol: sftp
-          local-dir: build/
+          local-dir: deploy/
           server-dir: /kashishseth.art/
           exclude: |
             **/.git*
             **/.git*/**
             **/node_modules/**
-            **/.env
+            **/.env*
             **/.DS_Store
+            **/cache/**
+            **/*.log
           dry-run: false
-
+          
       - name: Verify deployment
         run: |
           echo "Deployment completed successfully!"
-          echo "Site should be available at: ${{ secrets.SITE_URL }}"
-
+          echo "Site should be available at: https://kashishseth.art"
+          
       - name: Notify deployment status
         if: always()
         run: |
           if [ "${{ job.status }}" == "success" ]; then
-            echo "✅ Deployment successful"
+            echo "✅ Next.js deployment successful"
           else
-            echo "❌ Deployment failed"
+            echo "❌ Next.js deployment failed"
           fi
 
   post-deploy:
     needs: deploy
     runs-on: ubuntu-latest
     if: success()
-
     steps:
       - name: Create deployment summary
         run: |
-          echo "## 🚀 Deployment Summary" >> $GITHUB_STEP_SUMMARY
+          echo "## 🚀 Next.js Deployment Summary" >> $GITHUB_STEP_SUMMARY
           echo "- **Environment**: ${{ github.event.inputs.environment || 'production' }}" >> $GITHUB_STEP_SUMMARY
           echo "- **Release**: ${{ github.ref_name }}" >> $GITHUB_STEP_SUMMARY
           echo "- **Commit**: ${{ github.sha }}" >> $GITHUB_STEP_SUMMARY
           echo "- **Status**: ✅ Successful" >> $GITHUB_STEP_SUMMARY
           echo "- **Deployed at**: $(date)" >> $GITHUB_STEP_SUMMARY
+          echo "- **Site URL**: https://kashishseth.art" >> $GITHUB_STEP_SUMMARY
