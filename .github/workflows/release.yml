@@ -57,6 +57,12 @@ jobs:
         with:
           name: nextjs-build
 
+      - name: Move build artifacts to workspace root
+        run: |
+          shopt -s dotglob
+          mv nextjs-build/* .
+          rm -rf nextjs-build
+
       - name: Prepare deployment files
         run: |
           mkdir -p deploy
