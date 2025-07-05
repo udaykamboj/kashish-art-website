@@ -33,10 +33,15 @@ jobs:
         env:
           NODE_ENV: production
 
-      - name: Export static files (if using static export)
-        run: npm run export
-        continue-on-error: true
-        
+      - name: Check if .next folder exists
+        run: |
+          if [ -d ".next" ]; then
+            echo ".next folder exists."
+          else
+            echo "❌ .next folder does not exist! Build failed."
+            exit 1
+          fi
+
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
         with:
@@ -45,7 +50,7 @@ jobs:
             .next/
             public/
             package.json
-            next.config.mjs
+            next.config.ts
           retention-days: 30
   deploy:
     needs: build
@@ -56,12 +61,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: nextjs-build
-
-      - name: Move build artifacts to workspace root
-        run: |
-          shopt -s dotglob
-          mv nextjs-build/* .
-          rm -rf nextjs-build
+          path: .
 
       - name: Prepare deployment files
         run: |
@@ -78,8 +78,8 @@ jobs:
           if [ -f "package.json" ]; then
             cp package.json deploy/
           fi
-          if [ -f "next.config.mjs" ]; then
-            cp next.config.mjs deploy/
+          if [ -f "next.config.ts" ]; then
+            cp next.config.ts deploy/
           fi
 
       - name: Deploy to SFTP
@@ -144,6 +144,20 @@ jobs:
           echo "## 🚀 Next.js Deployment Summary" >> $GITHUB_STEP_SUMMARY
           echo "- **Environment**: ${{ github.event.inputs.environment || 'production' }}" >> $GITHUB_STEP_SUMMARY
           echo "- **Release**: ${{ github.ref_name }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Commit**: ${{ github.sha }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Status**: ✅ Successful" >> $GITHUB_STEP_SUMMARY
+          echo "- **Deployed at**: $(date)" >> $GITHUB_STEP_SUMMARY
+          echo "- **Site URL**: https://kashishseth.art" >> $GITHUB_STEP_SUMMARY
+          echo "- **Release**: ${{ github.ref_name }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Commit**: ${{ github.sha }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Status**: ✅ Successful" >> $GITHUB_STEP_SUMMARY
+          echo "- **Deployed at**: $(date)" >> $GITHUB_STEP_SUMMARY
+          echo "- **Site URL**: https://kashishseth.art" >> $GITHUB_STEP_SUMMARY
+          echo "- **Release**: ${{ github.ref_name }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Commit**: ${{ github.sha }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Status**: ✅ Successful" >> $GITHUB_STEP_SUMMARY
+          echo "- **Deployed at**: $(date)" >> $GITHUB_STEP_SUMMARY
+          echo "- **Site URL**: https://kashishseth.art" >> $GITHUB_STEP_SUMMARY
           echo "- **Commit**: ${{ github.sha }}" >> $GITHUB_STEP_SUMMARY
           echo "- **Status**: ✅ Successful" >> $GITHUB_STEP_SUMMARY
           echo "- **Deployed at**: $(date)" >> $GITHUB_STEP_SUMMARY
