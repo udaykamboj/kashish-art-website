@@ -85,15 +85,24 @@ jobs:
           fi
 
       - name: Deploy to SFTP
-        uses: appleboy/scp-action@v0.1.7
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
-          host: ftp.kashishseth.art
+          server: pdx1-shared-a1-33.dreamhost.com
           username: kashishseth
           password: ${{ secrets.FTP_PASSWORD }}
-          port: 22
-          source: "deploy/*"
-          target: "/kashishseth.art/"
-          overwrite: true
+          port: 21
+          protocol: ftp # or ftps if your host supports it
+          local-dir: deploy/
+          server-dir: /kashishseth.art/
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
+            **/.env*
+            **/.DS_Store
+            **/cache/**
+            **/*.log
+          dry-run: false
           
       - name: Verify deployment
         run: |
@@ -142,15 +151,6 @@ jobs:
           echo "- **Deployed at**: $(date)" >> $GITHUB_STEP_SUMMARY
           echo "- **Site URL**: https://kashishseth.art" >> $GITHUB_STEP_SUMMARY
           echo "- **Release**: ${{ github.ref_name }}" >> $GITHUB_STEP_SUMMARY
-          echo "- **Commit**: ${{ github.sha }}" >> $GITHUB_STEP_SUMMARY
-          echo "- **Status**: ✅ Successful" >> $GITHUB_STEP_SUMMARY
-          echo "- **Deployed at**: $(date)" >> $GITHUB_STEP_SUMMARY
-          echo "- **Site URL**: https://kashishseth.art" >> $GITHUB_STEP_SUMMARY
-          echo "- **Release**: ${{ github.ref_name }}" >> $GITHUB_STEP_SUMMARY
-          echo "- **Commit**: ${{ github.sha }}" >> $GITHUB_STEP_SUMMARY
-          echo "- **Status**: ✅ Successful" >> $GITHUB_STEP_SUMMARY
-          echo "- **Deployed at**: $(date)" >> $GITHUB_STEP_SUMMARY
-          echo "- **Site URL**: https://kashishseth.art" >> $GITHUB_STEP_SUMMARY
           echo "- **Commit**: ${{ github.sha }}" >> $GITHUB_STEP_SUMMARY
           echo "- **Status**: ✅ Successful" >> $GITHUB_STEP_SUMMARY
           echo "- **Deployed at**: $(date)" >> $GITHUB_STEP_SUMMARY
