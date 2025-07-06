@@ -2,7 +2,7 @@ import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Download, ExternalLink, Award, GraduationCap, Briefcase } from "lucide-react"
+import { Download, ExternalLink, Award, GraduationCap, Briefcase, Link } from "lucide-react"
 import experienceData from "@/data/experience.json"
 
 import { WEBSITE_EMAIL, WEBSITE_URL } from "@/config/config"
@@ -46,8 +46,10 @@ export default function ExperiencePage() {
                 Professional Experience
               </h2>
               <Button variant="outline" size="sm">
-                <Download className="mr-2 h-4 w-4" />
-                Download Resume
+                <Link href={`${WEBSITE_URL}/cv.pdf`} target="_blank">
+                  <Download className="mr-2 h-4 w-4" />
+                  Download Resume
+                </Link>
               </Button>
             </div>
 
