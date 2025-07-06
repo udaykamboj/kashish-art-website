@@ -1,13 +1,14 @@
 {
-  "name": "my-v0-project",
-  "version": "0.1.0",
+  "name": "kashishseth-website",
+  "description": "Kashish Seth's personal website",
+  "version": "0.1.20",
   "private": true,
   "scripts": {
     "build": "next build",
-    "dev": "next dev",
+    "dev": "next dev --turbopack",
+    "dev:tls": "next dev --turbopack --experimental-https",
     "lint": "next lint",
-    "start": "next start",
-    "export": "next export"
+    "start": "next start"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.1",

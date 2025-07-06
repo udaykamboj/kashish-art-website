@@ -102,7 +102,7 @@ export default function SignInPage() {
                 Continue with Google
               </Button>
               <Button variant="outline" className="w-full bg-transparent">
-                Continue with Apple
+                Continue with Facebook
               </Button>
             </div>
 
