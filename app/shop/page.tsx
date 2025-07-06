@@ -8,237 +8,25 @@ import { Button } from "@/components/ui/button"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Slider } from "@/components/ui/slider"
 import { Search, Filter, Palette, Sparkles, Heart } from "lucide-react"
+import productsData from "@/data/products.json"
 
-// Mock products data with placeholder images
-const mockProducts = [
-  {
-    id: "1",
-    title: "Kitchen Still Life Study",
-    artist: "Kashish",
-    category: "Drawing",
-    style: "Photorealism",
-    size: "Medium",
-    price: 50,
-    priceRange: "$50",
-    medium: "Graphite on paper",
-    year: "2024",
-    dimensions: '12" x 16"',
-    gallery: "Kashish Gallery",
-    location: "New York", // kept from old array
-    status: "available",
-    aspectRatio: "3/4",
-    images: ["/art/1.png"],
-  },
-  {
-    id: "2",
-    title: "Barack Obama",
-    artist: "Kashish",
-    category: "Drawing",
-    style: "Photorealism",
-    size: "Medium",
-    price: 80,
-    priceRange: "$80",
-    medium: "Graphite on paper",
-    year: "2024",
-    dimensions: '9" x 12"',
-    gallery: "Kashish Gallery",
-    location: "San Francisco", // kept old location
-    status: "available",
-    aspectRatio: "3/4",
-    images: ["/art/2.png"],
-  },
-  {
-    id: "3",
-    title: "Totem Pole of stories",
-    artist: "Kashish",
-    category: "Drawing",
-    style: "Traditional/Sacred Geometry",
-    size: "Medium",
-    price: 40,
-    priceRange: "$40",
-    medium: "Ink on paper",
-    year: "2024",
-    dimensions: '12" x 16"',
-    gallery: "Kashish Gallery",
-    location: "Los Angeles",
-    status: "available",
-    aspectRatio: "3/4",
-    images: ["/art/3.png"],
-  },
-  {
-    id: "4",
-    title: "A Lamp of Hope",
-    artist: "Kashish",
-    category: "Drawing",
-    style: "Contemporary Sacred Art",
-    size: "Medium",
-    price: 120,
-    priceRange: "$120",
-    medium: "Ink on paper",
-    year: "2024",
-    dimensions: '12" x 18"',
-    gallery: "Kashish Gallery",
-    location: "Chicago",
-    status: "available",
-    aspectRatio: "2/3",
-    images: ["/art/4.png"],
-  },
-  {
-    id: "5",
-    title: "Me in Between",
-    artist: "Kashish",
-    category: "Drawing",
-    style: "Traditional Decorative Arts",
-    size: "Medium",
-    price: 150,
-    priceRange: "$150",
-    medium: "Ink on paper",
-    year: "2024",
-    dimensions: '12" x 18"',
-    gallery: "Kashish Gallery",
-    location: "Portland",
-    status: "available",
-    aspectRatio: "2/3",
-    images: ["/art/5.png"],
-  },
-  {
-    id: "6",
-    title: "Sweetness of Time",
-    artist: "Kashish",
-    category: "Illustration",
-    style: "Contemporary Comic/Cartoon",
-    size: "Medium",
-    price: 50,
-    priceRange: "$50",
-    medium: "Ink on paper",
-    year: "2024",
-    dimensions: '9" x 12"',
-    gallery: "Kashish Gallery",
-    location: "Miami",
-    status: "available",
-    aspectRatio: "3/4",
-    images: ["/art/6.png"],
-  },
-  {
-    id: "7",
-    title: "Blooming Beyond Boundaries",
-    artist: "Kashish",
-    category: "Painting",
-    style: "Contemporary Cultural Art",
-    size: "Medium",
-    price: 180,
-    priceRange: "$180",
-    medium: "Acrylic on canvas",
-    year: "2024",
-    dimensions: '24" x 28"',
-    gallery: "Kashish Gallery",
-    location: "Denver",
-    status: "available",
-    aspectRatio: "6/7",
-    images: ["/art/7.png"],
-  },
-  {
-    id: "8",
-    title: "Symphony of Divine Love",
-    artist: "Kashish",
-    category: "Painting",
-    style: "Surrealism",
-    size: "Large",
-    price: 200,
-    priceRange: "$200",
-    medium: "Acrylic on canvas",
-    year: "2024",
-    dimensions: '30" x 40"',
-    gallery: "Kashish Gallery",
-    location: "Austin",
-    status: "available",
-    aspectRatio: "3/4",
-    images: ["/art/8.png"],
-  },
-  {
-    id: "9",
-    title: "Drifting Between Worlds",
-    artist: "Kashish",
-    category: "Drawing",
-    style: "Photorealism",
-    size: "Medium",
-    price: 60,
-    priceRange: "$60",
-    medium: "Colored pencil on paper",
-    year: "2024",
-    dimensions: '9" x 12"',
-    gallery: "Kashish Gallery",
-    location: "Seattle",
-    status: "available",
-    aspectRatio: "3/4",
-    images: ["/art/9.png"],
-  },
-  {
-    id: "10",
-    title: "Lotus Pulse",
-    artist: "Kashish",
-    category: "Digital Mandala",
-    style: "Digital Mandala",
-    size: "Medium",
-    price: 40,
-    priceRange: "$40",
-    medium: "Digital Art",
-    year: "2024",
-    dimensions: '12" x 16"',
-    gallery: "Kashish Digital Gallery",
-    location: "Remote",
-    status: "available",
-    aspectRatio: "3/4",
-    images: ["/art/10.png"],
-  },
-  {
-    id: "11",
-    title: "Celestial Bloom",
-    artist: "Kashish",
-    category: "Digital Mandala",
-    style: "Digital Mandala",
-    size: "Medium",
-    price: 40,
-    priceRange: "$40",
-    medium: "Digital Art",
-    year: "2024",
-    dimensions: '12" x 16"',
-    gallery: "Kashish Digital Gallery",
-    location: "Santa Fe",
-    status: "available",
-    aspectRatio: "3/4",
-    images: ["/art/11.png"],
-  },
-  {
-    id: "12",
-    title: "Sacred Tapestry",
-    artist: "Kashish",
-    category: "Digital Mandala",
-    style: "Digital Mandala",
-    size: "Medium",
-    price: 40,
-    priceRange: "$40",
-    medium: "Digital Art",
-    year: "2024",
-    dimensions: '12" x 16"',
-    gallery: "Kashish Digital Gallery",
-    location: "Online",
-    status: "available",
-    aspectRatio: "3/4",
-    images: ["/art/12.png"],
-  },
-];
+// Use merged products data from products.json
+// Defensive: productsData may be undefined or not have products
+const products: any[] = Array.isArray(productsData?.products) ? productsData.products.filter((item: any) => item.shop === true) : []
 
+const prices = products.map((p) => Number(p.price) || 0)
+const minPrice = prices.length > 0 ? Math.min(...prices) : 0
+const maxPrice = prices.length > 0 ? Math.max(...prices) : 0
 
-const categories = ["All", "Original Paintings", "Digital Art", "Photography", "Mixed Media", "Drawing"]
-const styles = ["Abstract", "Contemporary", "Minimalism", "Photorealism", "Pop Art", "Expressionism", "Geometric"]
-const sizes = ["Small", "Medium", "Large", "Extra Large"]
+const categories = Array.from(new Set(products.map((p) => p?.category).filter(Boolean))).sort()
+const styles = Array.from(new Set(products.map((p) => p?.style).filter(Boolean))).sort()
+const sizes = Array.from(new Set(products.map((p) => p?.size).filter(Boolean))).sort()
 
 export default function ShopPage() {
   const [selectedCategories, setSelectedCategories] = useState<string[]>([])
   const [selectedStyles, setSelectedStyles] = useState<string[]>([])
   const [selectedSizes, setSelectedSizes] = useState<string[]>([])
-  const [priceRange, setPriceRange] = useState([0, 5000])
+  const [priceRange, setPriceRange] = useState([0, 200])
   const [searchTerm, setSearchTerm] = useState("")
   const [showFilters, setShowFilters] = useState(false)
 
@@ -266,14 +54,16 @@ export default function ShopPage() {
     }
   }
 
-  const filteredProducts = mockProducts.filter((product) => {
+  const filteredProducts = products.filter((product) => {
+    // Defensive: check for undefined/null
+    if (!product) return false
     const matchesCategory = selectedCategories.length === 0 || selectedCategories.includes(product.category)
     const matchesStyle = selectedStyles.length === 0 || selectedStyles.includes(product.style)
     const matchesSize = selectedSizes.length === 0 || selectedSizes.includes(product.size)
-    const matchesPrice = product.price >= priceRange[0] && product.price <= priceRange[1]
+    const matchesPrice = Number(product.price) >= priceRange[0] && Number(product.price) <= priceRange[1]
     const matchesSearch =
-      product.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      product.artist.toLowerCase().includes(searchTerm.toLowerCase())
+      (product.title?.toLowerCase() || "").includes(searchTerm.toLowerCase()) ||
+      (product.artist?.toLowerCase() || "").includes(searchTerm.toLowerCase())
     return matchesCategory && matchesStyle && matchesSize && matchesPrice && matchesSearch
   })
 
@@ -352,7 +142,14 @@ export default function ShopPage() {
             <div className="bg-white p-6 rounded-lg border border-gray-200">
               <h3 className="font-semibold mb-4 text-gray-800">Price Range</h3>
               <div className="space-y-4">
-                <Slider value={priceRange} onValueChange={setPriceRange} max={5000} step={100} className="w-full" />
+                <Slider
+                  value={priceRange}
+                  onValueChange={setPriceRange}
+                  min={minPrice}
+                  max={maxPrice}
+                  step={10}
+                  className="w-full"
+                />
                 <div className="flex justify-between text-sm text-gray-600">
                   <span>${priceRange[0]}</span>
                   <span>${priceRange[1]}</span>
@@ -360,9 +157,9 @@ export default function ShopPage() {
               </div>
             </div>
 
-            {/* Medium */}
+            {/* Category */}
             <div className="bg-white p-6 rounded-lg border border-gray-200">
-              <h3 className="font-semibold mb-4 text-gray-800">Medium</h3>
+              <h3 className="font-semibold mb-4 text-gray-800">Category</h3>
               <div className="space-y-3">
                 {categories.slice(1).map((category) => (
                   <div key={category} className="flex items-center space-x-3">

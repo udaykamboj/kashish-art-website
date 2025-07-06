@@ -2,17 +2,23 @@
 
 import { useState } from "react"
 import Image from "next/image"
-import { artworks } from "@/data/gallery"
+import artworks from "@/data/products.json"
 import { Button } from "@/components/ui/button"
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog"
 
-const categories = ["All", "Digital", "Paintings", "Sketches", "Mixed Media"]
+const categories = ["All"];
+
+categories.push(
+  ...new Set(artworks.products.map((art: any) => art.category))
+)
 
 export default function GalleryPage() {
   const [selectedCategory, setSelectedCategory] = useState("All")
 
+  const data = artworks.products || []
+  // Filter artworks based on selected category
   const filteredArtworks =
-    selectedCategory === "All" ? artworks : artworks.filter((art) => art.category === selectedCategory)
+    selectedCategory === "All" ? data : data.filter((art: any) => art.category === selectedCategory)
 
   return (
     <div className="min-h-screen pt-20 pb-12">
@@ -48,7 +54,7 @@ export default function GalleryPage() {
                   <div className="group cursor-pointer">
                     <div className="mb-4 relative overflow-hidden rounded-lg shadow-md transition-shadow duration-300 hover:shadow-xl">
                       <Image
-                        src={art.image || "/placeholder.svg"}
+                        src={art.images[0] || "/placeholder.svg"}
                         alt={art.title}
                         width={400}
                         height={500}
@@ -76,7 +82,7 @@ export default function GalleryPage() {
                   {/* Left side - Image */}
                   <div className="bg-gray-100 flex items-center justify-center p-8">
                     <Image
-                      src={art.image || "/placeholder.svg"}
+                      src={art.images[0] || "/placeholder.svg"}
                       alt={art.title}
                       width={400}
                       height={500}

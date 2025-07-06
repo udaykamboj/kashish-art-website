@@ -22,7 +22,8 @@
       "edition": null,
       "gallery": "Kashish Gallery",
       "size": "Medium",
-      "style": "Photorealism"
+      "style": "Photorealism",
+      "shop": true
     },
     {
       "id": "2",
@@ -46,7 +47,8 @@
       "edition": null,
       "gallery": "Kashish Gallery",
       "size": "Medium",
-      "style": "Photorealism"
+      "style": "Photorealism",
+      "shop": true
     },
     {
       "id": "3",
@@ -70,7 +72,8 @@
       "edition": null,
       "gallery": "Kashish Gallery",
       "size": "Medium",
-      "style": "Traditional/Sacred Geometry"
+      "style": "Traditional/Sacred Geometry",
+      "shop": true
     },
     {
       "id": "4",
@@ -94,7 +97,8 @@
       "edition": null,
       "gallery": "Kashish Gallery",
       "size": "Medium",
-      "style": "Contemporary Sacred Art"
+      "style": "Contemporary Sacred Art",
+      "shop": true
     },
     {
       "id": "5",
@@ -118,7 +122,8 @@
       "edition": null,
       "gallery": "Kashish Gallery",
       "size": "Medium",
-      "style": "Traditional Decorative Arts"
+      "style": "Traditional Decorative Arts",
+      "shop": true
     },
     {
       "id": "6",
@@ -142,7 +147,8 @@
       "edition": null,
       "gallery": "Kashish Gallery",
       "size": "Medium",
-      "style": "Contemporary Comic/Cartoon"
+      "style": "Contemporary Comic/Cartoon",
+      "shop": true
     },
     {
       "id": "7",
@@ -166,7 +172,8 @@
       "edition": null,
       "gallery": "Kashish Gallery",
       "size": "Medium",
-      "style": "Contemporary Cultural Art"
+      "style": "Contemporary Cultural Art",
+      "shop": true
     },
     {
       "id": "8",
@@ -190,7 +197,8 @@
       "edition": null,
       "gallery": "Kashish Gallery",
       "size": "Large",
-      "style": "Surrealism"
+      "style": "Surrealism",
+      "shop": true
     },
     {
       "id": "9",
@@ -214,7 +222,8 @@
       "edition": null,
       "gallery": "Kashish Gallery",
       "size": "Medium",
-      "style": "Photorealism"
+      "style": "Photorealism",
+      "shop": true
     },
     {
       "id": "10",
@@ -237,7 +246,8 @@
       "edition": null,
       "gallery": "Kashish Digital Gallery",
       "size": "Medium",
-      "style": "Digital Mandala"
+      "style": "Digital Mandala",
+      "shop": true
     },
     {
       "id": "11",
@@ -260,7 +270,8 @@
       "edition": null,
       "gallery": "Kashish Digital Gallery",
       "size": "Medium",
-      "style": "Digital Mandala"
+      "style": "Digital Mandala",
+      "shop": true
     },
     {
       "id": "12",
@@ -283,7 +294,9 @@
       "edition": null,
       "gallery": "Kashish Digital Gallery",
       "size": "Medium",
-      "style": "Digital Mandala"
+      "style": "Digital Mandala",
+      "shop": true
     }
   ]
 }
+    

@@ -1,6 +1,5 @@
 "use client";
-import { socialLinks } from '@/config/config';
-import { Link } from 'lucide-react';
+import { socialLinks, WEBSITE_URL } from '@/config/config';
 import React, { useEffect, useRef } from 'react';
 
 export const HeroSection = () => {
@@ -111,7 +110,7 @@ const scrollToSection: ScrollToSectionFn = (sectionId) => {
           
           {/* Download CV Button */}
           <div className="mb-8">
-            <a href="https://www.diyakamboj.com/cv.pdf" 
+            <a href={`${WEBSITE_URL}/cv.pdf`} 
                target="_blank" 
                rel="noopener noreferrer"
                className="inline-block px-8 py-3 border-2 border-white text-white font-medium rounded-full hover:bg-white hover:text-gray-800 transition-all duration-300 transform hover:scale-105 tracking-wide">

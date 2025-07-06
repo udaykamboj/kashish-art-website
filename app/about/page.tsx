@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Quote, Award, Users, Palette, GraduationCap, Heart } from "lucide-react"
+import { WEBSITE_EMAIL, WEBSITE_URL } from "@/config/config"
 
 const timeline = [
   {
@@ -85,7 +86,7 @@ export default function AboutPage() {
         <div className="grid lg:grid-cols-2 gap-12 items-center mb-20">
           <div>
             <h1 className="text-5xl font-serif mb-6">My Story</h1>
-            <p className="text-xl text-gray-600 mb-6 leading-relaxed">
+            <p className="text-lg text-gray-600 mb-6 leading-relaxed">
               I'm Kashish Seth, a passionate high school student with a strong background in architecture, design,
               leadership, and community service. Currently a senior at North Creek High School in Bothell, WA, I
               demonstrate a strong work ethic and creative ability in everything I pursue.
@@ -129,7 +130,7 @@ export default function AboutPage() {
         </div>
 
         {/* Stats Section */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-20">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-20 mt-12">
           {stats.map((stat, index) => (
             <div key={index} className="text-center relative">
               <div className="text-4xl font-bold font-serif mb-2">{stat.number}</div>
@@ -224,7 +225,7 @@ export default function AboutPage() {
               <div className="grid md:grid-cols-2 gap-4 text-sm mb-6">
                 <div>
                   <p className="font-medium">Email</p>
-                  <p className="text-gray-600">kashish5278@gmail.com</p>
+                  <p className="text-gray-600">{WEBSITE_EMAIL}</p>
                 </div>
                 <div>
                   <p className="font-medium">Location</p>
@@ -232,11 +233,11 @@ export default function AboutPage() {
                 </div>
                 <div>
                   <p className="font-medium">Website</p>
-                  <p className="text-gray-600">kashishseth.art</p>
+                  <p className="text-gray-600">{WEBSITE_URL}</p>
                 </div>
               </div>
               <Button size="lg" asChild>
-                <a href="mailto:kashish5278@gmail.com">Send Message</a>
+                <a href={`mailto:${WEBSITE_EMAIL}`}>Send Message</a>
               </Button>
             </CardContent>
           </Card>
