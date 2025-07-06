@@ -33,7 +33,8 @@ export const metadata: Metadata = {
     "custom artwork",
   ],
   authors: [{ name: "Kashish" }],
-  creator: "Kashish",
+  creator: "Uday Kamboj",
+  
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -48,7 +49,7 @@ export const metadata: Metadata = {
     title: "Kashish | Contemporary Art & Creative Direction",
     description:
       "Contemporary artist and creative director specializing in mixed media, digital art, and creative consulting.",
-    creator: "@artisthandle",
+    creator: "@kashishseth.art",
   },
   robots: {
     index: true,
@@ -61,7 +62,7 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-    generator: 'v0.dev'
+    generator: 'Softleo.com'
 }
 
 export default function RootLayout({
@@ -71,6 +72,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <link rel="icon" href="/favicon.ico" />
+      </head>
       <body className={`${inter.variable} ${playfair.variable} font-sans antialiased`}>
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
           <div className="min-h-screen flex flex-col pt-4">
