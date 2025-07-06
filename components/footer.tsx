@@ -1,10 +1,7 @@
 import Link from "next/link"
-import { Instagram, Twitter, Facebook, Mail, MapPin } from "lucide-react"
-
-const socialLinks = [
-  { name: "Instagram", href: "https://www.instagram.com/kashishseth.art/", icon: Instagram },
-  { name: "Facebook", href: "#", icon: Facebook },
-]
+import Image from "next/image"
+import { Instagram, Twitter, Facebook, Mail, MapPin, Linkedin, Github } from "lucide-react"
+import { socialLinks, WEBSITE_EMAIL, WEBSITE_URL } from "@/config/config"
 
 const quickLinks = [
   { name: "Gallery", href: "/gallery" },
@@ -20,10 +17,14 @@ export default function Footer() {
         <div className="grid md:grid-cols-4 gap-8">
           {/* Brand Section */}
           <div className="md:col-span-2">
-            <Link href="/" className="font-serif text-3xl font-bold mb-4 block">
-              Kashish
-            </Link>
-            <p className="text-gray-300 mb-6 max-w-md">
+       
+         {/* Logo */}
+          <Link href={WEBSITE_URL} className="flex items-center space-x-2">
+            <Image src="/ks-art-logo-white.svg" alt="KS Art Logo" width={40} height={40} className="w-10 h-10" />
+            <span className="text-2xl text-white">Kashish <span className="font-bold">Seth</span></span>
+          </Link>
+
+            <p className="text-gray-300 mb-6 max-w-md mt-4">
               Passionate student with a strong background in architecture, design, leadership, and community service.
               Creating meaningful visual experiences and making a positive impact through art and education.
             </p>
@@ -61,7 +62,7 @@ export default function Footer() {
             <div className="space-y-3 text-gray-300">
               <div className="flex items-center">
                 <Mail className="h-4 w-4 mr-2" />
-                <span>kashish5278@gmail.com</span>
+                <span>{WEBSITE_EMAIL}</span>
               </div>
               <div className="flex items-center">
                 <MapPin className="h-4 w-4 mr-2" />

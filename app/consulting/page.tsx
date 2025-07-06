@@ -12,6 +12,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Badge } from "@/components/ui/badge"
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible"
 import { Calendar, Clock, CheckCircle, Mail, MapPin, Send, ChevronDown, ChevronUp, ArrowRight } from "lucide-react"
+import { CAL_ACCOUNT_LINK, WEBSITE_EMAIL } from "@/config/config"
 
 const services = [
   {
@@ -171,7 +172,7 @@ export default function ConsultingPage() {
   <div className="text-center">
     <Button asChild size="lg">
       <a 
-        href="https://cal.com/YOUR_USERNAME/consultation" 
+        href={CAL_ACCOUNT_LINK}
         target="_blank" 
         rel="noopener noreferrer"
         className="inline-flex items-center"
@@ -205,7 +206,7 @@ export default function ConsultingPage() {
                   </div>
                   <div>
                     <h3 className="font-semibold mb-1">Email</h3>
-                    <p className="text-gray-600">kashish5278@gmail.com</p>
+                    <p className="text-gray-600">{WEBSITE_EMAIL}</p>
                     <p className="text-sm text-gray-500">I typically respond within 24 hours</p>
                   </div>
                 </div>

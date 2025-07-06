@@ -16,6 +16,7 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Menu, ShoppingCart, User, Package, Heart, Settings, LogOut } from "lucide-react"
 import { useCart } from "@/lib/cart"
+import { WEBSITE_URL } from "@/config/config"
 
 const navigation = [
   { name: "Home", href: "/" },
@@ -56,7 +57,7 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2">
+          <Link href={WEBSITE_URL} className="flex items-center space-x-2">
             <Image src="/ks-art-logo.svg" alt="KS Art Logo" width={40} height={40} className="w-10 h-10" />
             <span className="text-2xl">Kashish <span className="font-bold">Seth</span></span>
           </Link>

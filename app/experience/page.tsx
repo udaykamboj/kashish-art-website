@@ -5,6 +5,8 @@ import { Badge } from "@/components/ui/badge"
 import { Download, ExternalLink, Award, GraduationCap, Briefcase } from "lucide-react"
 import experienceData from "@/data/experience.json"
 
+import { WEBSITE_EMAIL, WEBSITE_URL } from "@/config/config"
+
 export default function ExperiencePage() {
   return (
     <div className="min-h-screen pt-20 pb-12">
@@ -196,7 +198,7 @@ export default function ExperiencePage() {
               <div className="grid md:grid-cols-2 gap-4 text-sm">
                 <div>
                   <p className="font-medium">Email</p>
-                  <p className="text-gray-600">kashish5278@gmail.com</p>
+                  <p className="text-gray-600">{WEBSITE_EMAIL}</p>
                 </div>
                 <div>
                   <p className="font-medium">Location</p>
@@ -204,12 +206,12 @@ export default function ExperiencePage() {
                 </div>
                 <div>
                   <p className="font-medium">Website</p>
-                  <p className="text-gray-600">kashishseth.art</p>
+                  <p className="text-gray-600">{WEBSITE_URL}</p>
                 </div>
               </div>
               <div className="pt-4">
                 <Button asChild size="lg">
-                  <a href="mailto:kashish5278@gmail.com">Contact Me</a>
+                  <a href={`mailto:${WEBSITE_EMAIL}`}>Contact Me</a>
                 </Button>
               </div>
             </CardContent>
