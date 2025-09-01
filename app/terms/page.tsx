@@ -1,5 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { WEBSITE_EMAIL } from "@/config/config"
+import { siteConfig } from "@/config/site"
 
 export default function TermsOfServicePage() {
   return (
@@ -112,8 +112,9 @@ export default function TermsOfServicePage() {
             <CardContent className="prose max-w-none">
               <p>If you have any questions about these Terms of Service, please contact us at:</p>
               <div className="mt-4">
-                <p>Email: {WEBSITE_EMAIL}</p>
-                <p>Address: Bothell, WA</p>
+                <p>Email: {siteConfig.contact.email.support}</p>
+                <p>Phone: {siteConfig.contact.phone.main}</p>
+                <p>Address: {siteConfig.company.headquarters}</p>
               </div>
             </CardContent>
           </Card>

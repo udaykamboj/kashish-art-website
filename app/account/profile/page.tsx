@@ -1,6 +1,7 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import { useAuthStore } from "@/stores/auth-store"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
@@ -11,18 +12,30 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { ArrowLeft, Camera, Save } from "lucide-react"
 
 export default function ProfilePage() {
+  const { user } = useAuthStore();
   const [profileData, setProfileData] = useState({
-    firstName: "John",
-    lastName: "Doe",
-    email: "john@example.com",
-    phone: "(555) 123-4567",
-    bio: "Art enthusiast and collector",
-    address: "123 Main Street",
-    city: "New York",
-    state: "NY",
-    zipCode: "10001",
-    country: "United States",
-  })
+    firstName: user?.name?.split(" ")[0] || "",
+    lastName: user?.name?.split(" ")[1] || "",
+    email: user?.email || "",
+    phone: "",
+    bio: "",
+    address: "",
+    city: "",
+    state: "",
+    zipCode: "",
+    country: "",
+  });
+
+  useEffect(() => {
+    if (user) {
+      setProfileData((prev) => ({
+        ...prev,
+        firstName: user.name?.split(" ")[0] || "",
+        lastName: user.name?.split(" ")[1] || "",
+        email: user.email || "",
+      }));
+    }
+  }, [user]);
 
   const handleSave = () => {
     console.log("Profile updated:", profileData)
@@ -53,8 +66,10 @@ export default function ProfilePage() {
               <CardContent className="text-center">
                 <div className="relative inline-block">
                   <Avatar className="w-32 h-32 mx-auto mb-4">
-                    <AvatarImage src="/placeholder.svg" alt="Profile" />
-                    <AvatarFallback className="text-2xl">JD</AvatarFallback>
+                    <AvatarImage src={user?.avatar || "/placeholder-user.jpg"} alt={user?.name || "Profile"} />
+                    <AvatarFallback className="text-2xl bg-teal-600 text-white">
+                      {user?.name ? user.name.split(" ").map((n) => n[0]).join("") : "U"}
+                    </AvatarFallback>
                   </Avatar>
                   <Button size="sm" className="absolute bottom-4 right-0 rounded-full w-8 h-8 p-0">
                     <Camera className="h-4 w-4" />
@@ -178,5 +193,5 @@ export default function ProfilePage() {
         </div>
       </div>
     </div>
-  )
+  );
 }

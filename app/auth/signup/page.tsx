@@ -1,6 +1,7 @@
 "use client"
 
 import type React from "react"
+import { useAuthStore } from "@/stores/auth-store"
 
 import { useState } from "react"
 import Link from "next/link"
@@ -24,11 +25,24 @@ export default function SignUpPage() {
     agreeToTerms: false,
     subscribeNewsletter: false,
   })
+  const { signUp, isLoading } = useAuthStore()
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Handle sign up logic here
-    console.log("Sign up:", formData)
+    if (formData.password !== formData.confirmPassword) {
+      alert("Passwords do not match.")
+      return
+    }
+    try {
+      await signUp(
+        formData.firstName + " " + formData.lastName,
+        formData.email,
+        formData.password
+      )
+      window.location.href = "/"
+    } catch (error) {
+      alert("Sign up failed. Please try again.")
+    }
   }
 
   return (
@@ -167,12 +181,22 @@ export default function SignUpPage() {
             </div>
 
             <div className="space-y-3">
-              <Button variant="outline" className="w-full bg-transparent">
-                Continue with Google
+              <Button
+                variant="outline"
+                className="w-full bg-transparent"
+                onClick={async () => {
+                  try {
+                    await useAuthStore.getState().signInWithGoogle()
+                    window.location.href = "/"
+                  } catch (error) {
+                    alert("Google sign-up failed. Please try again.")
+                  }
+                }}
+                disabled={isLoading}
+              >
+                {isLoading ? "Signing up..." : "Continue with Google"}
               </Button>
-              <Button variant="outline" className="w-full bg-transparent">
-                Continue with Apple
-              </Button>
+             
             </div>
 
             <div className="text-center text-sm">

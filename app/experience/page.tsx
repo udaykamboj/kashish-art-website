@@ -5,7 +5,7 @@ import { Badge } from "@/components/ui/badge"
 import { Download, ExternalLink, Award, GraduationCap, Briefcase, Link } from "lucide-react"
 import experienceData from "@/data/experience.json"
 
-import { WEBSITE_EMAIL, WEBSITE_URL } from "@/config/config"
+import { siteConfig } from "@/config/site"
 
 export default function ExperiencePage() {
   return (
@@ -46,7 +46,7 @@ export default function ExperiencePage() {
                 Professional Experience
               </h2>
               <Button variant="outline" size="sm">
-                <Link href={`${WEBSITE_URL}/cv.pdf`} target="_blank">
+                <Link href={`${siteConfig.url}/cv.pdf`} target="_blank">
                   <Download className="mr-2 h-4 w-4" />
                   Download Resume
                 </Link>
@@ -200,7 +200,7 @@ export default function ExperiencePage() {
               <div className="grid md:grid-cols-2 gap-4 text-sm">
                 <div>
                   <p className="font-medium">Email</p>
-                  <p className="text-gray-600">{WEBSITE_EMAIL}</p>
+                  <p className="text-gray-600">{siteConfig.contact.email.support}</p>
                 </div>
                 <div>
                   <p className="font-medium">Location</p>
@@ -208,12 +208,12 @@ export default function ExperiencePage() {
                 </div>
                 <div>
                   <p className="font-medium">Website</p>
-                  <p className="text-gray-600">{WEBSITE_URL}</p>
+                  <p className="text-gray-600">{siteConfig.url}</p>
                 </div>
               </div>
               <div className="pt-4">
                 <Button asChild size="lg">
-                  <a href={`mailto:${WEBSITE_EMAIL}`}>Contact Me</a>
+                  <a href={`mailto:${siteConfig.contact.email.support}`}>Contact Me</a>
                 </Button>
               </div>
             </CardContent>

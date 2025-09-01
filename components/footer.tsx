@@ -1,13 +1,16 @@
 import Link from "next/link"
 import Image from "next/image"
-import { Instagram, Twitter, Facebook, Mail, MapPin, Linkedin, Github } from "lucide-react"
-import { socialLinks, WEBSITE_EMAIL, WEBSITE_URL } from "@/config/config"
+import { Instagram, Facebook, Linkedin, Github, MapPin, Mail } from "lucide-react"
+import { siteConfig } from "@/config/site"
 
-const quickLinks = [
-  { name: "Gallery", href: "/gallery" },
-  { name: "Shop", href: "/shop" },
-  { name: "Consulting", href: "/consulting" },
-  { name: "About", href: "/about" },
+const quickLinks = siteConfig.nav.footer.quickLinks
+const legalLinks = siteConfig.nav.footer.legal
+
+const socialLinks = [
+  { name: "Instagram", href: siteConfig.social.instagram, icon: Instagram },
+  { name: "Facebook", href: siteConfig.social.facebook, icon: Facebook },
+  { name: "LinkedIn", href: siteConfig.social.linkedin, icon: Linkedin },
+  { name: "GitHub", href: siteConfig.social.github, icon: Github },
 ]
 
 export default function Footer() {
@@ -19,7 +22,7 @@ export default function Footer() {
           <div className="md:col-span-2">
        
          {/* Logo */}
-          <Link href={WEBSITE_URL} className="flex items-center space-x-2">
+          <Link href={siteConfig.url} className="flex items-center space-x-2">
             <Image src="/ks-art-logo-white.svg" alt="KS Art Logo" width={40} height={40} className="w-10 h-10" />
             <span className="text-2xl text-white">Kashish <span className="font-bold">Seth</span></span>
           </Link>
@@ -35,6 +38,8 @@ export default function Footer() {
                   href={social.href}
                   className="text-gray-400 hover:text-white transition-colors"
                   aria-label={social.name}
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   <social.icon className="h-5 w-5" />
                 </Link>
@@ -47,9 +52,9 @@ export default function Footer() {
             <h3 className="font-semibold text-lg mb-4">Quick Links</h3>
             <ul className="space-y-2">
               {quickLinks.map((link) => (
-                <li key={link.name}>
-                  <Link href={WEBSITE_URL + link.href} className="text-gray-300 hover:text-white transition-colors">
-                    {link.name}
+                <li key={link.title}>
+                  <Link href={siteConfig.url + link.href} className="text-gray-300 hover:text-white transition-colors">
+                    {link.title}
                   </Link>
                 </li>
               ))}
@@ -62,25 +67,28 @@ export default function Footer() {
             <div className="space-y-3 text-gray-300">
               <div className="flex items-center">
                 <Mail className="h-4 w-4 mr-2" />
-                <span>{WEBSITE_EMAIL}</span>
+                <span>{siteConfig.contact.email.support}</span>
               </div>
               <div className="flex items-center">
                 <MapPin className="h-4 w-4 mr-2" />
-                <span>Bothell, WA</span>
+                <span>{siteConfig.contact.address.city}, {siteConfig.contact.address.country}</span>
               </div>
             </div>
           </div>
         </div>
 
         <div className="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-gray-400 text-sm">© {new Date().getFullYear()} Kashish Seth. All rights reserved.</p>
+          <p className="text-gray-400 text-sm">{siteConfig.legal.copyright}</p>
           <div className="flex space-x-6 mt-4 md:mt-0">
-            <Link href={`${WEBSITE_URL}/privacy`} className="text-gray-400 hover:text-white text-sm transition-colors">
-              Privacy Policy
-            </Link>
-            <Link href={`${WEBSITE_URL}/terms`} className="text-gray-400 hover:text-white text-sm transition-colors">
-              Terms of Service
-            </Link>
+            {legalLinks.map((link) => (
+              <Link
+                key={link.title}
+                href={siteConfig.url + link.href}
+                className="text-gray-400 hover:text-white text-sm transition-colors"
+              >
+                {link.title}
+              </Link>
+            ))}
           </div>
         </div>
       </div>

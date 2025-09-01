@@ -1,4 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { siteConfig } from "@/config/site"
 
 export default function PrivacyPolicyPage() {
   return (
@@ -122,9 +123,9 @@ export default function PrivacyPolicyPage() {
             <CardContent className="prose max-w-none">
               <p>If you have any questions about this Privacy Policy, please contact us at:</p>
               <div className="mt-4">
-                <p>Email: kashish5278@gmail.com</p>
-                <p>Phone: (425) 236-2930</p>
-                <p>Address: Bothell, WA</p>
+                <p>Email: {siteConfig.contact.email.support}</p>
+                <p>Phone: {siteConfig.contact.phone.main}</p>
+                <p>Address: {siteConfig.company.headquarters}</p>
               </div>
             </CardContent>
           </Card>

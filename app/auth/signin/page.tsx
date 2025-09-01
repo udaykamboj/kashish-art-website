@@ -3,6 +3,7 @@
 import type React from "react"
 
 import { useState } from "react"
+import { useAuthStore } from "@/stores/auth-store"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
@@ -12,22 +13,32 @@ import { Separator } from "@/components/ui/separator"
 import { ArrowLeft, Eye, EyeOff } from "lucide-react"
 
 export default function SignInPage() {
+
   const [showPassword, setShowPassword] = useState(false)
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   })
+  const { signInWithGoogle, signIn, isLoading } = useAuthStore()
 
-  const handleSubmit = (e: React.FormEvent) => {
+
+  const handleSignIn = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Handle sign in logic here
-    console.log("Sign in:", formData)
+    try {
+      await signIn(formData.email, formData.password)
+      window.location.href = "/"
+    } catch (error) {
+      alert("Sign in failed. Please check your credentials.")
+    }
+  }
 
-    // Simulate successful sign in
-    localStorage.setItem("hasSignedIn", "true")
-
-    // Redirect to home page or previous page
-    window.location.href = "/"
+  const handleGoogleSignIn = async () => {
+    try {
+      await signInWithGoogle()
+      window.location.href = "/"
+    } catch (error) {
+      alert("Google sign-in failed. Please try again.")
+    }
   }
 
   return (
@@ -48,7 +59,7 @@ export default function SignInPage() {
             <CardDescription>Sign in to your account to continue</CardDescription>
           </CardHeader>
           <CardContent className="space-y-6">
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <form onSubmit={handleSignIn} className="space-y-4">
               <div>
                 <Label htmlFor="email">Email</Label>
                 <Input
@@ -98,12 +109,15 @@ export default function SignInPage() {
             </div>
 
             <div className="space-y-3">
-              <Button variant="outline" className="w-full bg-transparent">
-                Continue with Google
+              <Button
+                variant="outline"
+                className="w-full bg-transparent"
+                onClick={handleGoogleSignIn}
+                disabled={isLoading}
+              >
+                {isLoading ? "Signing in..." : "Continue with Google"}
               </Button>
-              <Button variant="outline" className="w-full bg-transparent">
-                Continue with Facebook
-              </Button>
+          
             </div>
 
             <div className="text-center text-sm">

@@ -1,5 +1,5 @@
 "use client";
-import { socialLinks, WEBSITE_URL } from '@/config/config';
+import { siteConfig } from '@/config/site';
 import React, { useEffect, useRef } from 'react';
 
 export const HeroSection = () => {
@@ -95,12 +95,19 @@ const scrollToSection: ScrollToSectionFn = (sectionId) => {
           {/* Social Links */}
           <div className="flex justify-center space-x-4 mb-8">
         
-              {socialLinks.map((social) => (
+              {[
+                { name: "Instagram", href: siteConfig.social.instagram, icon: require('lucide-react').Instagram },
+                { name: "Facebook", href: siteConfig.social.facebook, icon: require('lucide-react').Facebook },
+                { name: "LinkedIn", href: siteConfig.social.linkedin, icon: require('lucide-react').Linkedin },
+                { name: "GitHub", href: siteConfig.social.github, icon: require('lucide-react').Github },
+              ].map((social) => (
                 <a
                   key={social.name}
                   href={social.href}
                   className="text-gray-400 hover:text-white transition-colors"
                   aria-label={social.name}
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   <social.icon className="h-5 w-5" />
                 </a>
@@ -110,7 +117,7 @@ const scrollToSection: ScrollToSectionFn = (sectionId) => {
           
           {/* Download CV Button */}
           <div className="mb-8">
-            <a href={`${WEBSITE_URL}/cv.pdf`} 
+            <a href={`${siteConfig.url}/cv.pdf`}
                target="_blank" 
                rel="noopener noreferrer"
                className="inline-block px-8 py-3 border-2 border-white text-white font-medium rounded-full hover:bg-white hover:text-gray-800 transition-all duration-300 transform hover:scale-105 tracking-wide">

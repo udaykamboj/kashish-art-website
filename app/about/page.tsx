@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Quote, Award, Users, Palette, GraduationCap, Heart } from "lucide-react"
-import { WEBSITE_EMAIL, WEBSITE_URL } from "@/config/config"
+import { siteConfig } from "@/config/site"
 
 const timeline = [
   {
@@ -105,7 +105,7 @@ export default function AboutPage() {
             </div>
             <div className="flex flex-col sm:flex-row gap-4">
               <Button size="lg" asChild>
-                <a href="mailto:kashish5278@gmail.com">Get In Touch</a>
+                <a href="/contact">Get In Touch</a>
               </Button>
               <Button variant="outline" size="lg" asChild>
                 <a href="/experience">View My Work</a>
@@ -225,19 +225,19 @@ export default function AboutPage() {
               <div className="grid md:grid-cols-2 gap-4 text-sm mb-6">
                 <div>
                   <p className="font-medium">Email</p>
-                  <p className="text-gray-600">{WEBSITE_EMAIL}</p>
+                  <p className="text-gray-600">{siteConfig.contact.email.support}</p>
                 </div>
                 <div>
                   <p className="font-medium">Location</p>
-                  <p className="text-gray-600">Bothell, WA</p>
+                  <p className="text-gray-600">{siteConfig.company.headquarters}</p>
                 </div>
                 <div>
                   <p className="font-medium">Website</p>
-                  <p className="text-gray-600">{WEBSITE_URL}</p>
+                  <p className="text-gray-600">{siteConfig.url}</p>
                 </div>
               </div>
               <Button size="lg" asChild>
-                <a href={`mailto:${WEBSITE_EMAIL}`}>Send Message</a>
+                <a href="/contact">Send Message</a>
               </Button>
             </CardContent>
           </Card>
