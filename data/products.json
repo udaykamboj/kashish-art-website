@@ -319,7 +319,7 @@
       "gallery": "Kashish Digital Gallery",
       "size": "Medium",
       "style": "Digital Mandala",
-      "shop": true
+      "shop": false
     },
     {
       "id": "14",
@@ -343,7 +343,7 @@
       "gallery": "Kashish Digital Gallery",
       "size": "Medium",
       "style": "Digital Mandala",
-      "shop": true
+      "shop": false
     },
     {
       "id": "15",
@@ -367,7 +367,7 @@
       "gallery": "Kashish Digital Gallery",
       "size": "Medium",
       "style": "Digital Mandala",
-      "shop": true
+      "shop": false
     }
   ]
 }
