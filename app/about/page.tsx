@@ -12,19 +12,29 @@ const timeline = [
     description: "Currently participating in architecture, construction, and engineering mentorship program",
   },
   {
-    year: "2024",
-    title: "Founded KashishSethArts",
+    year: "2025",
+    title: "Voice of youth recognition award ",
+    description: "Currently participating in architecture, construction, and engineering mentorship program",
+  },
+  {
+    year: "2021",
+    title: "Founded kashishseth.art",
     description: "Launched online art store and creative platform at kashishseth.art",
   },
   {
-    year: "2024",
-    title: "UCLA AUD Summer Program",
-    description: "Completed intensive Architecture and Urban Design program",
+    year: "2020",
+    title: "Founded non profit art academy “Art 101”",
+    description: "Established Art 101 to provide free art education and resources",
   },
   {
     year: "2024",
-    title: "National Art Contest Winner",
-    description: "1st Place in National Federal Duck Stamp Art Contest",
+    title: "UCLA AUD Summer program",
+    description: "Completed intensive Architecture and Urban Design program",
+  },
+  {
+    year: "2022",
+    title: "2nd place in National Federal duck stamp",
+    description: "Awarded 2nd place in the National Federal Duck Stamp Art Contest",
   },
   {
     year: "2023",
@@ -32,7 +42,12 @@ const timeline = [
     description: "Recognized for outstanding community service contributions",
   },
   {
-    year: "2021",
+    year: "2025",
+    title: "Silver PVSA Recipient",
+    description: "Recognized for continued community service contributions",
+  },
+  {
+    year: "2020",
     title: "Teaching Journey Begins",
     description: "Started as Assistant Teacher at Wisdom Seedlings, working with young children",
   },
@@ -76,6 +91,7 @@ const activities = [
   "FBLA, HOSA, TSA State Qualifier (2024-2025)",
   "Teen Arts Council Member - Graphic Designer",
   "Fashion Commercial Modeling",
+  "ACE Mentor Program"
 ]
 
 export default function AboutPage() {
