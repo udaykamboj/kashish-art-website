@@ -21,11 +21,11 @@ export const siteConfig = {
 
   contact: {
     email: {
-      support: "contact@kashishseth.art",
-      info: "info@kashishseth.art",
+      support: "kashishseth.art@gmail.com",
+      info: "kashishseth.art@gmail.com",
       personal: "kashish5278@gmail.com",
-      partnerships: "partners@kashishseth.art",
-      careers: "careers@kashishseth.art",
+      partnerships: "kashishseth.art@gmail.com",
+      careers: "kashishseth.art@gmail.com",
     },
     calAccountLink: "https://cal.com/kashishseth.art/30min",
     phone: {
