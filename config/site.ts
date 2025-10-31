@@ -51,7 +51,7 @@ export const siteConfig = {
   social: {
     instagram: "https://www.instagram.com/kashishseth.art/",
     facebook: "#",
-    linkedin: "https://www.linkedin.com/in/kashishseth/",
+    linkedin: "https://www.linkedin.com/in/kashish-seth230108",
     github: "https://github.com/kashishseth",
   },
 
